@@ -1063,7 +1063,31 @@
         <div class="modal-body">
           <h6>Оставьте свои контактные данные чтобы мы могли связаться с вами.</h6>
           <p>
-            ...
+            <div class="col-lg-6">
+              <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                <h3 class = "send-message-form-header">Напишите нам</h3>
+                <div class="row">
+                  <div class="col form-group">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Введите ваше имя" required>
+                  </div>
+                  <div class="col form-group">
+                    <input type="phonenumber" class="form-control" name="phonenumber" id="phonenumber" placeholder="Введите номер телефона" required>
+                  </div>
+                </div>
+                <!-- <div class="form-group">
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                </div> -->
+                <div class="form-group">
+                  <textarea class="form-control" name="message" rows="7" placeholder="Введите сообщение" required></textarea>
+                </div>
+                <div class="my-3">
+                  <div class="loading">Загрузка</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Ваше сообщение было отправлено. Спасибо! В скором времени наш оператор свяжется с вами.</div>
+                </div>
+                <div class="text-center"><button type="submit">Отправить</button></div>
+              </form>
+            </div>
           </p>
         </div>
         <div class="modal-footer">
