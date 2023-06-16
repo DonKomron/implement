@@ -1026,6 +1026,7 @@
 
 
   <!-- Order call Modal -->
+  <form action="forms/contact.php" method="post" role="form" id="modal-form" class="php-email-form">
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -1038,22 +1039,20 @@
         <div class="modal-body">
           <p style = "margin-bottom: 1rem; font-size: small;">Оставьте свои контактные данные чтобы мы могли связаться с вами.</p>
             <div class="col-lg-20">
-              <form action="forms/contact.php" method="post" role="form" class="php-email-form">
                 <div class="row">
                   <div class="col form-group" style="padding-right: 0.5rem; margin-bottom: 1rem;">
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Имя" required>
+                    <input type="text" name="name" class="form-control" id="modal-name" placeholder="Имя" required>
                   </div>
                   <div class="col form-group" style="padding-left: 0.5rem; margin-bottom: 1rem;">
-                    <input type="phonenumber" class="form-control" name="phonenumber" id="phonenumber" placeholder="Номер телефона" required>
+                    <input type="phonenumber" class="form-control" name="phonenumber" id="modal-phonenumber" placeholder="Номер телефона" required>
                   </div>
                 </div>
                 <!-- <div class="form-group">
                   <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
                 </div> -->
                 <div class="form-group">
-                  <textarea class="form-control" name="message" rows="7" placeholder="Введите сообщение" required></textarea>
+                  <textarea class="form-control" name="message" id="modal-message" rows="7" placeholder="Введите сообщение" required></textarea>
                 </div>
-              </form>
             </div>
         </div>
         <div class="modal-footer">
@@ -1063,6 +1062,7 @@
       </div>
     </div>
   </div>
+</form>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>

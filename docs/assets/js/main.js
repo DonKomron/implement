@@ -4,7 +4,7 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
-(function() {
+(function () {
   "use strict";
 
   /**
@@ -117,7 +117,7 @@
   /**
    * Mobile nav toggle
    */
-  on('click', '.mobile-nav-toggle', function(e) {
+  on('click', '.mobile-nav-toggle', function (e) {
     select('#navbar').classList.toggle('navbar-mobile')
     this.classList.toggle('bi-list')
     this.classList.toggle('bi-x')
@@ -126,7 +126,7 @@
   /**
    * Mobile nav dropdowns activate
    */
-  on('click', '.navbar .dropdown > a', function(e) {
+  on('click', '.navbar .dropdown > a', function (e) {
     if (select('#navbar').classList.contains('navbar-mobile')) {
       e.preventDefault()
       this.nextElementSibling.classList.toggle('dropdown-active')
@@ -136,7 +136,7 @@
   /**
    * Scrool with ofset on links with a class name .scrollto
    */
-  on('click', '.scrollto', function(e) {
+  on('click', '.scrollto', function (e) {
     if (select(this.hash)) {
       e.preventDefault()
 
@@ -187,7 +187,7 @@
     new Waypoint({
       element: skilsContent,
       offset: '80%',
-      handler: function(direction) {
+      handler: function (direction) {
         let progress = select('.progress .progress-bar', true);
         progress.forEach((el) => {
           el.style.width = el.getAttribute('aria-valuenow') + '%'
@@ -226,9 +226,9 @@
 
       let portfolioFilters = select('#portfolio-flters li', true);
 
-      on('click', '#portfolio-flters li', function(e) {
+      on('click', '#portfolio-flters li', function (e) {
         e.preventDefault();
-        portfolioFilters.forEach(function(el) {
+        portfolioFilters.forEach(function (el) {
           el.classList.remove('filter-active');
         });
         this.classList.add('filter-active');
@@ -236,7 +236,7 @@
         portfolioIsotope.arrange({
           filter: this.getAttribute('data-filter')
         });
-        portfolioIsotope.on('arrangeComplete', function() {
+        portfolioIsotope.on('arrangeComplete', function () {
           AOS.refresh()
         });
       }, true);
@@ -286,3 +286,32 @@
   new PureCounter();
 
 })()
+
+/**
+ * Form handling
+ */
+const BOT_TOKEN = "6213364804:AAGy0y1qeJglZAFoc6uOIKYNnG87BvnUYM8";
+const CHAT_ID = "-877110692";
+
+const mainForm = document.querySelector("#modal-form");
+const userName = document.querySelector("#modal-name");
+const phoneNumber = document.querySelector("#modal-phonenumber");
+const message = document.querySelector("#modal-message");
+
+mainForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  TEXT =
+    `<b>Client:</b> ${userName.value} \n` +
+    `<b>Number:</b> ${phoneNumber.value} \n` +
+    `<b>Message:</b> ${message.value}`;
+  const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(TEXT)}&parse_mode=HTML`;
+  fetch(url)
+    .then((response) => response.json())
+    .then(() => {
+      alert("Ваше сообщение отправлено!");
+      userName.value = "";
+      phoneNumber.value = "";
+      message.value = "";
+    })
+    .catch((error) => alert("Сообщение но отправлено ("));
+});
